@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  golang:
+    build: golang/.
+    volumes:
+      - ./golang:/go/src/golang
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=:5001
+
+  python:
+    build: python/.
+    volumes:
+      - ./python:/code
+    depends_on:
+      - golang
